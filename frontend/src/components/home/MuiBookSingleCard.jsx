@@ -2,7 +2,6 @@
 import { useState } from 'react'
 // Router
 import { Link } from 'react-router-dom'
-
 // Card
 import {
   Card,
@@ -21,71 +20,84 @@ import DeleteIcon from '@mui/icons-material/Delete'
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import { grey, red } from '@mui/material/colors'
+// Components
+import MuiBookModal from './MuiBookModal'
 
 const MuiBookSingleCard = ({ book }) => {
-  // const [showModal, setShowModal] = useState(false)
+  const [showModal, setShowModal] = useState(false)
 
   return (
-    <Card
-      elevation={4}
-      sx={{
-        background:
-          // 'linear-gradient(to top, rgba(0,0,0,0.4), rgba(0,0,0,0) 200px), linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0) 300px)',
-          'radial-gradient(circle, rgba(255, 239, 0, 0.5728991425671831) 0%, rgba(255, 145, 0, 0.5897058652562588) 95%)',
-        ':hover': { boxShadow: 10 },
-      }}
-    >
-      <CardContent
+    <>
+      <Card
+        elevation={4}
         sx={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          px: '10px',
-          pb: '0px',
+          background:
+            // 'linear-gradient(to top, rgba(0,0,0,0.4), rgba(0,0,0,0) 200px), linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0) 300px)',
+            'radial-gradient(circle, rgba(255, 239, 0, 0.5728991425671831) 0%, rgba(255, 145, 0, 0.5897058652562588) 95%)',
+          ':hover': { boxShadow: 10 },
         }}
       >
-        <Typography sx={{ color: grey[500] }}>{book._id}</Typography>
-        <Typography
+        <CardContent
           sx={{
-            color: 'white',
-            bgcolor: red[300],
-            py: '5px',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
             px: '10px',
-            borderRadius: '10px',
+            pb: '0px',
           }}
         >
-          {book.publishYear}
-        </Typography>
-      </CardContent>
+          <Typography sx={{ color: grey[500] }}>{book._id}</Typography>
+          <Typography
+            sx={{
+              color: 'white',
+              bgcolor: red[300],
+              py: '5px',
+              px: '10px',
+              borderRadius: '10px',
+            }}
+          >
+            {book.publishYear}
+          </Typography>
+        </CardContent>
 
-      <CardContent
-        sx={{ display: 'flex', flexDirection: 'column', gap: '10px' }}
-      >
-        <Box sx={{ display: 'flex', gap: '5px', alignItems: 'center' }}>
-          <LibraryBooksIcon sx={{ color: red[300] }} />{' '}
-          <Typography variant="h7">{book.title}</Typography>
-        </Box>
-        <Box sx={{ display: 'flex', gap: '5px', alignItems: 'center' }}>
-          <AccountCircleIcon sx={{ color: red[300] }} />{' '}
-          <Typography variant="h7">{book.author}</Typography>
-        </Box>
-      </CardContent>
-      <Divider />
-      <CardActions sx={{ display: 'flex', justifyContent: 'space-around' }}>
-        <IconButton aria-label="preview">
-          <VisibilityIcon />
-        </IconButton>
-        <IconButton aria-label="info">
-          <InfoIcon />
-        </IconButton>
-        <IconButton aria-label="edit">
-          <EditNoteIcon />
-        </IconButton>
-        <IconButton aria-label="delete">
-          <DeleteIcon />
-        </IconButton>
-      </CardActions>
-    </Card>
+        <CardContent
+          sx={{ display: 'flex', flexDirection: 'column', gap: '10px' }}
+        >
+          <Box sx={{ display: 'flex', gap: '5px', alignItems: 'center' }}>
+            <LibraryBooksIcon sx={{ color: red[300] }} />{' '}
+            <Typography variant="h7">{book.title}</Typography>
+          </Box>
+          <Box sx={{ display: 'flex', gap: '5px', alignItems: 'center' }}>
+            <AccountCircleIcon sx={{ color: red[300] }} />{' '}
+            <Typography variant="h7">{book.author}</Typography>
+          </Box>
+        </CardContent>
+        <Divider />
+        <CardActions sx={{ display: 'flex', justifyContent: 'space-around' }}>
+          <IconButton onClick={() => setShowModal(true)} aria-label="preview">
+            <VisibilityIcon />
+          </IconButton>
+          <IconButton aria-label="info">
+            <InfoIcon />
+          </IconButton>
+          <IconButton aria-label="edit">
+            <EditNoteIcon />
+          </IconButton>
+          <IconButton aria-label="delete">
+            <DeleteIcon />
+          </IconButton>
+        </CardActions>
+      </Card>
+      <Box>
+        {showModal && (
+          <MuiBookModal
+            book={book}
+            showModal={showModal}
+            setShowModal={setShowModal}
+          />
+        )}
+      </Box>
+    </>
   )
 }
 
