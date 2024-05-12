@@ -6,11 +6,11 @@ import { Link } from 'react-router-dom'
 // Card
 import {
   Card,
-  CardHeader,
   CardContent,
   CardActions,
   Typography,
   Box,
+  Divider,
 } from '@mui/material'
 // Icons
 import InfoIcon from '@mui/icons-material/Info'
@@ -23,13 +23,22 @@ import { grey, red } from '@mui/material/colors'
 
 const MuiBookSingleCard = ({ book }) => {
   // const [showModal, setShowModal] = useState(false)
-  console.log('bokkID', book._id)
+  // console.log('bokkID', book._id)
   return (
-    <Card elevation={4} sx={{ ':hover': { boxShadow: 10 } }}>
+    <Card
+      elevation={4}
+      sx={{
+        background:
+          // 'linear-gradient(to top, rgba(0,0,0,0.4), rgba(0,0,0,0) 200px), linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0) 300px)',
+          'radial-gradient(circle, rgba(255, 239, 0, 0.5728991425671831) 0%, rgba(255, 145, 0, 0.5897058652562588) 95%)',
+        ':hover': { boxShadow: 10 },
+      }}
+    >
       <CardContent
         sx={{
           display: 'flex',
           justifyContent: 'space-between',
+          alignItems: 'center',
           px: '10px',
           pb: '0px',
         }}
@@ -60,6 +69,7 @@ const MuiBookSingleCard = ({ book }) => {
           <Typography variant="h7">{book.author}</Typography>
         </Box>
       </CardContent>
+      <Divider />
       <CardActions></CardActions>
     </Card>
   )
