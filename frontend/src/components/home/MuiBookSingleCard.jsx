@@ -11,6 +11,7 @@ import {
   Typography,
   Box,
   Divider,
+  IconButton,
 } from '@mui/material'
 // Icons
 import InfoIcon from '@mui/icons-material/Info'
@@ -23,7 +24,7 @@ import { grey, red } from '@mui/material/colors'
 
 const MuiBookSingleCard = ({ book }) => {
   // const [showModal, setShowModal] = useState(false)
-  // console.log('bokkID', book._id)
+
   return (
     <Card
       elevation={4}
@@ -70,7 +71,20 @@ const MuiBookSingleCard = ({ book }) => {
         </Box>
       </CardContent>
       <Divider />
-      <CardActions></CardActions>
+      <CardActions sx={{ display: 'flex', justifyContent: 'space-around' }}>
+        <IconButton aria-label="preview">
+          <VisibilityIcon />
+        </IconButton>
+        <IconButton aria-label="info">
+          <InfoIcon />
+        </IconButton>
+        <IconButton aria-label="edit">
+          <EditNoteIcon />
+        </IconButton>
+        <IconButton aria-label="delete">
+          <DeleteIcon />
+        </IconButton>
+      </CardActions>
     </Card>
   )
 }
