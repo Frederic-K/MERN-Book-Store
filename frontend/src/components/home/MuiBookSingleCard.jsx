@@ -73,17 +73,22 @@ const MuiBookSingleCard = ({ book }) => {
           </Box>
         </CardContent>
         <Divider />
-        <CardActions sx={{ display: 'flex', justifyContent: 'space-around' }}>
+        <CardActions
+          sx={{
+            display: 'flex',
+            justifyContent: 'space-around',
+          }}
+        >
           <IconButton onClick={() => setShowModal(true)} aria-label="preview">
             <VisibilityIcon />
           </IconButton>
-          <IconButton aria-label="info">
+          <IconButton aria-label="info" href={`/books/details/${book._id}`}>
             <InfoIcon />
           </IconButton>
-          <IconButton aria-label="edit">
+          <IconButton aria-label="edit" href={`/books/edit/${book._id}`}>
             <EditNoteIcon />
           </IconButton>
-          <IconButton aria-label="delete">
+          <IconButton aria-label="delete" href={`/books/delete/${book._id}`}>
             <DeleteIcon />
           </IconButton>
         </CardActions>
