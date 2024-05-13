@@ -7,6 +7,13 @@ import EditBook from './pages/EditBook'
 import DeleteBook from './pages/DeleteBook'
 import PageError from './pages/PageError'
 import RootLayout from './components/RootLayout'
+// MUI
+import { CssBaseline } from '@mui/material'
+import { ThemeProvider } from '@mui/material/styles'
+// Redux
+import { useSelector } from 'react-redux'
+import { modeThemeSelector } from './themes/ModeTheme/modeThemeSlice'
+import originalTheme from './themes/Themes'
 
 const router = createBrowserRouter([
   {
@@ -39,9 +46,15 @@ const router = createBrowserRouter([
 ])
 
 const App = () => {
+  const { modeTheme } = useSelector(modeThemeSelector)
+  const { theme } = originalTheme(modeTheme)
+  console.log('mode', modeTheme)
+
   return (
     <>
-      <RouterProvider router={router} />
+      <ThemeProvider theme={theme}>
+        <RouterProvider router={router} />
+      </ThemeProvider>
     </>
     // <Routes>
     //   <Route path="/" element={<Home />} />
