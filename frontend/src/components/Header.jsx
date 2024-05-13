@@ -2,11 +2,11 @@
 import { useNavigate } from 'react-router-dom'
 // Redux
 import { useSelector, useDispatch } from 'react-redux'
-import { modeThemeSelector } from '../themes/ModeTheme/modeThemeSlice'
+import { modeThemeSelector } from '../features/ModeTheme/modeThemeSlice'
 import {
   addModeTheme,
   clearModeTheme,
-} from '../themes/ModeTheme/modeThemeSlice'
+} from '../features/ModeTheme/modeThemeSlice'
 // MUI
 import Brightness4Icon from '@mui/icons-material/Brightness4'
 import Brightness7Icon from '@mui/icons-material/Brightness7'
@@ -17,7 +17,7 @@ import ContactPageIcon from '@mui/icons-material/ContactPage'
 import bannerBckground from '../assets/wallpaperflare.com_wallpaper-11-banner.jpg'
 
 const Header = () => {
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
   const dispatch = useDispatch()
   const { modeTheme } = useSelector(modeThemeSelector)
 
@@ -47,15 +47,15 @@ const Header = () => {
       }}
     >
       <IconButton
-        href="/"
+        // href="/"
         aria-label="Go Homepage"
         sx={{
           color: 'primary.main',
           '&:hover': { color: 'secondary.main' },
         }}
-        // onClick={() => {
-        //   navigate('/')
-        // }}
+        onClick={() => {
+          navigate('/')
+        }}
       >
         <HomeIcon />
       </IconButton>

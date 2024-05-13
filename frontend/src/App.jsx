@@ -3,16 +3,17 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Home from './pages/Home'
 import ShowBook from './pages/ShowBook'
 import CreateBooks from './pages/CreateBooks'
+import MuiCreateBook from './pages/MuiCreateBook'
 import EditBook from './pages/EditBook'
 import DeleteBook from './pages/DeleteBook'
 import PageError from './pages/PageError'
 import RootLayout from './components/RootLayout'
 // MUI
-import { CssBaseline } from '@mui/material'
+// import { CssBaseline } from '@mui/material'
 import { ThemeProvider } from '@mui/material/styles'
 // Redux
 import { useSelector } from 'react-redux'
-import { modeThemeSelector } from './themes/ModeTheme/modeThemeSlice'
+import { modeThemeSelector } from './features/ModeTheme/modeThemeSlice'
 import originalTheme from './themes/Themes'
 
 const router = createBrowserRouter([
@@ -27,7 +28,8 @@ const router = createBrowserRouter([
       },
       {
         path: '/books/create',
-        element: <CreateBooks />,
+        //  element: <CreateBooks />,
+        element: <MuiCreateBook />,
       },
       {
         path: '/books/details/:id',
