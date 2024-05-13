@@ -1,6 +1,13 @@
+// MUI
+import { Container } from '@mui/material'
+// Assets
+// import cimentDarkBckground from '../assets/cimentDarkWallpaper.jpg'
+
 const Spinner = () => {
   return (
-    <div className="animate-ping w-16 h-16 m-8 rounded-full bg-sky-600"></div>
+    <Container>
+      <div className="animate-ping w-16 h-16 m-8 rounded-full bg-sky-600"></div>
+    </Container>
   )
 }
 

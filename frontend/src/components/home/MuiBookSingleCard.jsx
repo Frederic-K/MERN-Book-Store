@@ -19,7 +19,7 @@ import EditNoteIcon from '@mui/icons-material/EditNote'
 import DeleteIcon from '@mui/icons-material/Delete'
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
-import { grey, red } from '@mui/material/colors'
+import { blue, green, grey, red, yellow } from '@mui/material/colors'
 // Components
 import MuiBookModal from './MuiBookModal'
 
@@ -30,11 +30,12 @@ const MuiBookSingleCard = ({ book }) => {
     <>
       <Card
         elevation={4}
+        className="basic-bg-radial"
         sx={{
-          background:
-            // 'linear-gradient(to top, rgba(0,0,0,0.4), rgba(0,0,0,0) 200px), linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0) 300px)',
-            'radial-gradient(circle, rgba(255, 239, 0, 0.5728991425671831) 0%, rgba(255, 145, 0, 0.5897058652562588) 95%)',
-          ':hover': { boxShadow: 10 },
+          ':hover': {
+            boxShadow: '0px 0px 10px 5px #FFCB91',
+            border: '1px solid black',
+          },
         }}
       >
         <CardContent
@@ -80,16 +81,16 @@ const MuiBookSingleCard = ({ book }) => {
           }}
         >
           <IconButton onClick={() => setShowModal(true)} aria-label="preview">
-            <VisibilityIcon />
+            <VisibilityIcon sx={{ color: blue[900] }} />
           </IconButton>
           <IconButton aria-label="info" href={`/books/details/${book._id}`}>
-            <InfoIcon />
+            <InfoIcon sx={{ color: green[900] }} />
           </IconButton>
           <IconButton aria-label="edit" href={`/books/edit/${book._id}`}>
-            <EditNoteIcon />
+            <EditNoteIcon sx={{ color: yellow[900] }} />
           </IconButton>
           <IconButton aria-label="delete" href={`/books/delete/${book._id}`}>
-            <DeleteIcon />
+            <DeleteIcon sx={{ color: red[900] }} />
           </IconButton>
         </CardActions>
       </Card>

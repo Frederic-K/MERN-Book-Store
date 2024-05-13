@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.text-radial-gradient-Text {
+  background: #ff8c1a;
+  background: radial-gradient(
+    circle farthest-corner at center center,
+    #ff8c1a 0%,
+    #cf1512 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.basic-bg-radial {
+  background: rgb(255, 239, 0);
+  background: radial-gradient(
+    circle,
+    rgba(255, 239, 0, 0.5728991425671831) 0%,
+    rgba(255, 145, 0, 0.5897058652562588) 95%
+  );
+}
