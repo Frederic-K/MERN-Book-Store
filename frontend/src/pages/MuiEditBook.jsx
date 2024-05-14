@@ -15,7 +15,9 @@ import {
   Button,
   Stack,
   Typography,
+  IconButton,
 } from '@mui/material'
+import HighlightOffIcon from '@mui/icons-material/HighlightOff'
 import RestartAltIcon from '@mui/icons-material/RestartAlt'
 import SendIcon from '@mui/icons-material/Send'
 // Assets
@@ -29,40 +31,40 @@ const MuiEditBook = () => {
   const navigate = useNavigate()
   const { enqueueSnackbar } = useSnackbar()
   const { id } = useParams()
-  const [book, setBook] = useState({})
+
+  // Input state
+  const [bookInputs, setBookInputs] = useState({
+    title: '',
+    author: '',
+    publishYear: '',
+  })
 
   useEffect(() => {
     setLoading(true)
     axios
       .get(`http://localhost:5555/books/${id}`)
       .then((response) => {
-        // setAuthor(response.data.author)
-        // setPublishYear(response.data.publishYear)
-        // setTitle(response.data.title)
-        setBook(response.data)
-        console.log('book edit data', book)
+        setBookInputs({
+          ...bookInputs,
+          title: response.data.title,
+          author: response.data.author,
+          publishYear: response.data.publishYear,
+        })
         setLoading(false)
       })
       .catch((error) => {
-        setLoading(false)
-        alert('An error happened. Please Chack console')
         console.log(error)
+        setLoading(false)
       })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [id])
+
+  console.log('bookInputs', bookInputs)
 
   // Validation data state
   const [errors, setErrors] = useState({})
   // Handle reset
   const [submitting, setSubmitting] = useState(false)
-
-  // Input state
-  const [bookInputs, setBookInputs] = useState({
-    title: book.title,
-    author: book.author,
-    publishYear: book.publishYear,
-  })
-  console.log('bookInputs', bookInputs)
 
   // Update input
   const handleChangeInput = (e) => {
@@ -96,7 +98,7 @@ const MuiEditBook = () => {
     console.log('dataAxios-1', data)
     setLoading(true)
     axios
-      .put('http://localhost:5555/books', data)
+      .put(`http://localhost:5555/books/${id}`, data)
       .then(() => {
         setLoading(false)
         enqueueSnackbar('Book Created successfully', { variant: 'success' })
@@ -121,25 +123,10 @@ const MuiEditBook = () => {
     setErrors({})
   }
 
-  //   const handleSaveBook = () => {
-  //     const data = {
-  //       ...bookInputs,
-  //     }
-  //     setLoading(true)
-  //     axios
-  //       .post('http://localhost:5555/books', data)
-  //       .then(() => {
-  //         setLoading(false)
-  //         enqueueSnackbar('Book Created successfully', { variant: 'success' })
-  //         navigate('/')
-  //       })
-  //       .catch((error) => {
-  //         setLoading(false)
-  //         // alert('An error happened. Please Chack console')
-  //         enqueueSnackbar('Error', { variant: 'error' })
-  //         console.log(error)
-  //       })
-  //   }
+  const handleClose = () => {
+    navigate('/')
+  }
+
   return (
     <Container
       maxWidth="false"
@@ -172,8 +159,16 @@ const MuiEditBook = () => {
           alignItems: 'center',
           justifyContent: 'center',
           // animation: 'fadeIn 1.5s forwards',
+          position: 'relative',
         }}
       >
+        <IconButton
+          onClick={handleClose}
+          aria-label="close"
+          sx={{ position: 'absolute', top: '5px', right: '5px' }}
+        >
+          <HighlightOffIcon />
+        </IconButton>
         <Typography
           variant="h4"
           className="text-radial-gradient-Text"
@@ -201,7 +196,7 @@ const MuiEditBook = () => {
             name={'title'}
             // label={'Title'}
             helperText={errors.title ? errors.title : 'Choose a title'}
-            value={book.title}
+            value={bookInputs.title}
             onChange={(e) => handleChangeInput(e)}
           />
           <TextField
@@ -213,7 +208,7 @@ const MuiEditBook = () => {
             name={'author'}
             // label={'Author'}
             helperText={errors.author ? errors.author : 'Choose an author'}
-            value={book.author}
+            value={bookInputs.author}
             onChange={(e) => handleChangeInput(e)}
           />
           <TextField
@@ -230,7 +225,7 @@ const MuiEditBook = () => {
                 ? errors.publishYear
                 : 'Choose publish year > 0'
             }
-            value={book.publishYear}
+            value={bookInputs.publishYear}
             onChange={(e) => handleChangeInput(e)}
           />
         </Box>

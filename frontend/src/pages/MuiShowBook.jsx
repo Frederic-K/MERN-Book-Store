@@ -1,10 +1,18 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import BackButton from '../components/BackButton'
 import Spinner from '../components/Spinner'
 //MUI
-import { Container, Paper, Box, Typography, Divider } from '@mui/material'
+import {
+  Container,
+  Paper,
+  Box,
+  Typography,
+  Divider,
+  IconButton,
+} from '@mui/material'
+import HighlightOffIcon from '@mui/icons-material/HighlightOff'
 // Assets
 import cimentDarkBckground from '../assets/cimentDarkWallpaper.jpg'
 
@@ -12,6 +20,7 @@ const MuiShowBook = () => {
   const [book, setBook] = useState({})
   const [loading, setLoading] = useState(false)
   const { id } = useParams()
+  const navigate = useNavigate()
 
   useEffect(() => {
     setLoading(true)
@@ -27,6 +36,10 @@ const MuiShowBook = () => {
       })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  const handleClose = () => {
+    navigate('/')
+  }
 
   return (
     <Container
@@ -62,8 +75,16 @@ const MuiShowBook = () => {
             justifyContent: 'center',
             p: 2,
             // animation: 'fadeIn 1.5s forwards',
+            position: 'relative',
           }}
         >
+          <IconButton
+            onClick={handleClose}
+            aria-label="close"
+            sx={{ position: 'absolute', top: '5px', right: '5px' }}
+          >
+            <HighlightOffIcon />
+          </IconButton>
           <Typography
             variant="h5"
             className="text-radial-gradient-Text"
