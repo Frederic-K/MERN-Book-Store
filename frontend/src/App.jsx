@@ -2,9 +2,11 @@ import { Routes, Route } from 'react-router-dom'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Home from './pages/Home'
 import ShowBook from './pages/ShowBook'
+import MuiShowBook from './pages/MuiShowBook'
 import CreateBooks from './pages/CreateBooks'
 import MuiCreateBook from './pages/MuiCreateBook'
 import EditBook from './pages/EditBook'
+import MuiEditBook from './pages/MuiEditBook'
 import DeleteBook from './pages/DeleteBook'
 import MuiDeleteBook from './pages/MuiDeleteBook'
 import PageError from './pages/PageError'
@@ -34,11 +36,13 @@ const router = createBrowserRouter([
       },
       {
         path: '/books/details/:id',
-        element: <ShowBook />,
+        // element: <ShowBook />,
+        element: <MuiShowBook />,
       },
       {
         path: '/books/edit/:id',
-        element: <EditBook />,
+        // element: <EditBook />,
+        element: <MuiEditBook />,
       },
       {
         path: '/books/delete/:id',
