@@ -6,6 +6,7 @@ import CreateBooks from './pages/CreateBooks'
 import MuiCreateBook from './pages/MuiCreateBook'
 import EditBook from './pages/EditBook'
 import DeleteBook from './pages/DeleteBook'
+import MuiDeleteBook from './pages/MuiDeleteBook'
 import PageError from './pages/PageError'
 import RootLayout from './components/RootLayout'
 // MUI
@@ -41,7 +42,8 @@ const router = createBrowserRouter([
       },
       {
         path: '/books/delete/:id',
-        element: <DeleteBook />,
+        // element: <DeleteBook />,
+        element: <MuiDeleteBook />,
       },
     ],
   },

@@ -1,7 +1,7 @@
 // React
 import { useState } from 'react'
 // Router
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 // Card
 import {
   Card,
@@ -33,8 +33,9 @@ const MuiBookSingleCard = ({ book }) => {
         className="basic-bg-radial"
         sx={{
           ':hover': {
-            boxShadow: '0px 0px 10px 5px #FFCB91',
-            border: '1px solid black',
+            // boxShadow: '0px 0px 10px 5px #FFCB91',
+            border: '2px solid white',
+            // transform: 'scale(1.01)',
           },
         }}
       >
