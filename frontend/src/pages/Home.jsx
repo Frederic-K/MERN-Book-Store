@@ -15,6 +15,7 @@ import { Container, IconButton, Box, Stack, Typography } from '@mui/material'
 import ViewComfyAltIcon from '@mui/icons-material/ViewComfyAlt'
 import ViewListIcon from '@mui/icons-material/ViewList'
 import AddCircleIcon from '@mui/icons-material/AddCircle'
+import useMediaQuery from '@mui/material/useMediaQuery'
 // Assets
 import cimentDarkBckground from '../assets/cimentDarkWallpaper.jpg'
 // Redux
@@ -29,6 +30,7 @@ const Home = () => {
   const [books, setBooks] = useState([])
   const [loading, setLoading] = useState(false)
   // const [showType, setShowType] = useState('table')
+  const matches = useMediaQuery('(min-width:450px)')
 
   useEffect(() => {
     setLoading(true)
@@ -72,11 +74,13 @@ const Home = () => {
             display: 'flex',
             alignItems: 'center',
             // justifyContent: 'flex-start',
-            gap: '20px',
+            flexDirection: `${matches ? 'row' : 'column'}`,
+            gap: `${matches ? '20px' : '0px'}`,
           }}
         >
           <Typography
-            variant="h4"
+            variant={`${matches ? 'h4' : 'h6'}`}
+            // variant="h4"
             className="text-radial-gradient-Text"
             sx={{ fontWeight: 700 }}
           >
@@ -119,10 +123,11 @@ const Home = () => {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'flex-end',
+            flexDirection: `${matches ? 'row' : 'column'}`,
           }}
         >
           <Typography
-            variant="h6"
+            variant={`${matches ? 'h4' : 'h6'}`}
             className="text-radial-gradient-Text"
             sx={{ fontWeight: 700 }}
           >
@@ -144,28 +149,27 @@ const Home = () => {
           </IconButton>
         </Box>
       </Box>
-
       <div className="p-4">
         {/* <div className="flex justify-center items-center gap-x-4">
-          <button
-            className="bg-sky-300 hover:bg-sky-600 px-4 py-1 rounded-lg"
-            onClick={() => setShowType('table')}
-          >
-            Table
-          </button>
-          <button
-            className="bg-sky-300 hover:bg-sky-600 px-4 py-1 rounded-lg"
-            onClick={() => setShowType('card')}
-          >
-            Card
-          </button>
-        </div> */}
+      <button
+        className="bg-sky-300 hover:bg-sky-600 px-4 py-1 rounded-lg"
+        onClick={() => setShowType('table')}
+      >
+        Table
+      </button>
+      <button
+        className="bg-sky-300 hover:bg-sky-600 px-4 py-1 rounded-lg"
+        onClick={() => setShowType('card')}
+      >
+        Card
+      </button>
+    </div> */}
         {/* <div className="flex justify-between items-center">
-          <h1 className="text-3xl my-8">Books List</h1>
-          <Link to="/books/create">
-            <MdOutlineAddBox className="text-sky-800 text-4xl" />
-          </Link>
-        </div> */}
+      <h1 className="text-3xl my-8">Books List</h1>
+      <Link to="/books/create">
+        <MdOutlineAddBox className="text-sky-800 text-4xl" />
+      </Link>
+    </div> */}
         {loading ? (
           <Spinner />
         ) : homeView === 'table' ? (
