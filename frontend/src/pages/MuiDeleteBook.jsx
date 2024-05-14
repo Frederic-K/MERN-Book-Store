@@ -17,13 +17,13 @@ import {
   Stack,
 } from '@mui/material'
 // Icons
-import InfoIcon from '@mui/icons-material/Info'
-import VisibilityIcon from '@mui/icons-material/Visibility'
-import EditNoteIcon from '@mui/icons-material/EditNote'
-import DeleteIcon from '@mui/icons-material/Delete'
+// import InfoIcon from '@mui/icons-material/Info'
+// import VisibilityIcon from '@mui/icons-material/Visibility'
+// import EditNoteIcon from '@mui/icons-material/EditNote'
+// import DeleteIcon from '@mui/icons-material/Delete'
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
-import { blue, green, grey, red, yellow } from '@mui/material/colors'
+import { green, grey, red } from '@mui/material/colors'
 // Assets
 import cimentDarkBckground from '../assets/cimentDarkWallpaper.jpg'
 
@@ -167,7 +167,11 @@ const MuiDeleteBook = () => {
             }}
           >
             <Button
-              sx={{ width: '290px', bgcolor: red[700] }}
+              sx={{
+                width: '290px',
+                bgcolor: red[600],
+                ':hover': { bgcolor: red[900] },
+              }}
               onClick={() => {
                 handleDeleteBook()
               }}
@@ -175,7 +179,12 @@ const MuiDeleteBook = () => {
               <Typography sx={{ color: 'white' }}>DELETE</Typography>
             </Button>
             <Button
-              sx={{ width: '290px', bgcolor: green[500] }}
+              color="success"
+              sx={{
+                width: '290px',
+                bgcolor: green[500],
+                ':hover': { bgcolor: green[800] },
+              }}
               onClick={() => {
                 navigate('/')
               }}
