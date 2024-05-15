@@ -21,3 +21,13 @@
     rgba(255, 145, 0, 0.5897058652562588) 95%
   );
 }
+
+.grid-header-linear-gradient {
+  background: rgb(195, 75, 34);
+  background: linear-gradient(
+    180deg,
+    rgba(195, 75, 34, 1) 0%,
+    rgba(232, 178, 0, 1) 100%
+  );
+  font-size: large;
+}

@@ -62,6 +62,7 @@ const Header = () => {
       <Box sx={{ display: 'flex', alignItems: 'center' }}>
         <Typography color="primary">{modeTheme} mode</Typography>
         <IconButton
+          aria-label="Dark mode toggle"
           sx={{ ml: 1 }}
           onClick={() => {
             ToggleModeTheme()

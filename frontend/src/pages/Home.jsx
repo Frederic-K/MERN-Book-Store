@@ -1,15 +1,12 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import Spinner from '../components/Spinner'
-// import { Link } from 'react-router-dom'
-// import { AiOutlineEdit } from 'react-icons/ai'
-// import { BsInfoCircle } from 'react-icons/bs'
-// import { MdOutlineAddBox, MdOutlineDelete } from 'react-icons/md'
 // Router
 import { useNavigate } from 'react-router-dom'
 // Components
 import BooksTable from '../components/home/BooksTable'
 import MuiBooksCard from '../components/home/MuiBooksCard'
+import MuiBooksTable from '../components/home/MuiBooksTable'
 //MUI
 import { Container, IconButton, Box, Stack, Typography } from '@mui/material'
 import ViewComfyAltIcon from '@mui/icons-material/ViewComfyAlt'
@@ -127,7 +124,7 @@ const Home = () => {
           }}
         >
           <Typography
-            variant={`${matches ? 'h4' : 'h6'}`}
+            variant={`${matches ? 'h5' : 'h6'}`}
             className="text-radial-gradient-Text"
             sx={{ fontWeight: 700 }}
           >
@@ -173,7 +170,7 @@ const Home = () => {
         {loading ? (
           <Spinner />
         ) : homeView === 'table' ? (
-          <BooksTable books={books} />
+          <MuiBooksTable books={books} />
         ) : (
           <MuiBooksCard books={books} />
         )}

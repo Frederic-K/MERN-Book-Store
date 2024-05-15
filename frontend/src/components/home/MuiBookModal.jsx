@@ -7,8 +7,14 @@ import HighlightOffIcon from '@mui/icons-material/HighlightOff'
 import { red, grey } from '@mui/material/colors'
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
+// Redux
+import { useSelector } from 'react-redux'
+// Theme
+import { modeThemeSelector } from '../../features/ModeTheme/modeThemeSlice'
 
 const MuiBookModal = ({ book, showModal, setShowModal }) => {
+  const { modeTheme } = useSelector(modeThemeSelector)
+
   const handleClose = () => {
     setShowModal(false)
   }
@@ -56,7 +62,13 @@ const MuiBookModal = ({ book, showModal, setShowModal }) => {
             <Typography sx={{ color: grey[500] }}>{book._id}</Typography>
           </Box>
 
-          <Box component="section" sx={{ my: '10px' }}>
+          <Box
+            component="section"
+            sx={{
+              my: '10px',
+              color: `${modeTheme === 'light' ? 'black' : 'white'}`,
+            }}
+          >
             <Box
               sx={{
                 display: 'flex',
@@ -84,22 +96,28 @@ const MuiBookModal = ({ book, showModal, setShowModal }) => {
               </Typography>
             </Box>
           </Box>
-          <Typography
-            id={`book-preview-${book.title}`}
-            // variant="h6"
-            // component="h2"
-            sx={{ fontSize: '20px' }}
+          <Box
+            component="section"
+            aria-label="Book preview"
+            sx={{ color: `${modeTheme === 'light' ? 'black' : 'white'}` }}
           >
-            Anything You want to show
-          </Typography>
-          <Typography id="modal-modal-description">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni quia
-            voluptatum sint. Nisi impedit libero eveniet cum vitae qui expedita
-            necessitatibus assumenda laboriosam, facilis iste cumque a pariatur
-            nesciunt cupiditate voluptas? Quis atque earum voluptate dolor nisi
-            dolorum est? Deserunt placeat cumque quo dicta architecto, dolore
-            vitae voluptate sequi repellat!
-          </Typography>
+            <Typography
+              id={`book-preview-${book.title}`}
+              // variant="h6"
+              // component="h2"
+              sx={{ fontSize: '20px' }}
+            >
+              Anything You want to show
+            </Typography>
+            <Typography>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni
+              quia voluptatum sint. Nisi impedit libero eveniet cum vitae qui
+              expedita necessitatibus assumenda laboriosam, facilis iste cumque
+              a pariatur nesciunt cupiditate voluptas? Quis atque earum
+              voluptate dolor nisi dolorum est? Deserunt placeat cumque quo
+              dicta architecto, dolore vitae voluptate sequi repellat!
+            </Typography>
+          </Box>
         </Box>
       </Modal>
     </>
