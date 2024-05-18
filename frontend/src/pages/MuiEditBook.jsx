@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-// import BackButton from '../components/BackButton'
 import Spinner from '../components/Spinner'
 import axios from 'axios'
 import { useNavigate, useParams } from 'react-router-dom'
@@ -24,9 +23,6 @@ import SendIcon from '@mui/icons-material/Send'
 import cimentDarkBckground from '../assets/cimentDarkWallpaper.jpg'
 
 const MuiEditBook = () => {
-  //   const [title, setTitle] = useState('')
-  //   const [author, setAuthor] = useState('')
-  //   const [publishYear, setPublishYear] = useState('')
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
   const { enqueueSnackbar } = useSnackbar()
@@ -101,7 +97,7 @@ const MuiEditBook = () => {
       .put(`http://localhost:5555/books/${id}`, data)
       .then(() => {
         setLoading(false)
-        enqueueSnackbar('Book Created successfully', { variant: 'success' })
+        enqueueSnackbar('Book Updated successfully', { variant: 'success' })
         navigate('/')
       })
       .catch((error) => {

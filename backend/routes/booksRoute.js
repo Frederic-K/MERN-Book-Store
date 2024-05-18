@@ -1,7 +1,3 @@
-// app.listen(PORT, () => {
-//   console.log(`App is listening to port : ${PORT}`)
-// })
-
 import express from 'express'
 import { Book } from '../models/bookModel.js'
 
